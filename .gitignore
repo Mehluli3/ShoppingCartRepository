@@ -1,6 +1,5 @@
  # Intellij
 .idea/
-projectIDE.iml
-ResidenceManagementSystem.iml
+.iml
 target/
 .properties
