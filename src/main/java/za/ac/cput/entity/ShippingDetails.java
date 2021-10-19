@@ -8,7 +8,6 @@ import java.io.Serializable;
  * ShippingDetails.java
  * Shipping Details Entity
  * Author: Aderito Zacarias - 215278739
- * 11 June 2021
  **/
 
 @Entity

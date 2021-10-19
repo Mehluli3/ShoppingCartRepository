@@ -1,5 +1,11 @@
 package za.ac.cput.service.impl;
 
+/**
+ * ShippingDetailsFactory.java
+ * Shipping Details Service Implementation
+ * Author: Aderito Zacarias (215278739)
+ **/
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.entity.ShippingDetails;

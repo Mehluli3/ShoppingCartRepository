@@ -3,7 +3,6 @@ package za.ac.cput.factory;
  * ShippingDetailsFactory.java
  * Shipping Details Factory
  * Author: Aderito Zacarias (215278739)
- * 11 June 2021
  **/
 
 import za.ac.cput.entity.ShippingDetails;

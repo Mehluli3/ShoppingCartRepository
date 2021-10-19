@@ -1,5 +1,9 @@
-package za.ac.cput.repository.impl;//package za.ac.cput.repository.implementation;
-//
+//package za.ac.cput.repository.impl;
+///**
+// * ShippingDetailsFactory.java
+// * Shipping Details Repository Implementation
+// * Author: Aderito Zacarias (215278739)
+// **/
 //import za.ac.cput.entity.ShippingDetails;
 //import za.ac.cput.factory.ShippingDetailsFactory;
 //import za.ac.cput.repository.IShippingDetailsRepository;

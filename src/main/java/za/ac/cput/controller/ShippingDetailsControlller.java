@@ -1,9 +1,8 @@
 package za.ac.cput.controller;
 /**
  * ShippingDetails.java
- * Shipping Details Entity
+ * Shipping Details Controller
  * Author: Aderito Zacarias - 215278739
- * 11 June 2021
  **/
 
 import org.springframework.beans.factory.annotation.Autowired;
