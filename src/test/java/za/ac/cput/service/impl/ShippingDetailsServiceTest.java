@@ -6,6 +6,7 @@ package za.ac.cput.service.impl;
  * Author: Aderito Zacarias (215278739)
  **/
 
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.entity.ShippingDetails;
@@ -65,12 +66,19 @@ class ShippingDetailsServiceTest {
         System.out.println(service.read(shippingDetailsByAir.getShippingId()));
     }
 
+
+
     @Test
-    void update() {
+    public void update() {
+        ShippingDetails updated = new ShippingDetails.Builder().copy(shippingDetailsByAir).build();
+        updated = service.update(updated);
+        System.out.println("Updated: " + updated);
     }
 
     @Test
-    void delete() {
+    public void delete() {
+        boolean deleted = service.delete(shippingDetailsByAir.toString());
+        Assert.assertTrue(deleted);
     }
 
 }
