@@ -1,6 +1,6 @@
 package za.ac.cput.service.impl;
 
-import org.junit.jupiter.api.Pay;
+//import org.junit.jupiter.api.Pay;
 import za.ac.cput.entity.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,6 @@ import za.ac.cput.service.PaymentService;
 
 
 import java.util.Set;
-Import java.util.Hashset;
 import java.util.stream.Collectors;
 
 /** Payment Service
@@ -24,18 +23,18 @@ public class PaymentImp implements PaymentService {
 
     @Override
     public Payment create(Payment payment){
-        return this.repository.save(payment);
+        return (Payment) this.repository.save(payment);
     }
 
     @Override
     public Payment read(String s){
-        return this.repository.findById(s).orElseGet(null);
+        return (Payment) this.repository.findById(s).orElseGet(null);
     }
 
     @Override
     public Payment update(Payment payment){
         if(this.repository.existsById(payment.toString())) {
-            return this.repository.save(payment);
+            return (Payment) this.repository.save(payment);
         }
         return null;
     }
@@ -51,6 +50,6 @@ public class PaymentImp implements PaymentService {
 
     @Override
     public Set<Payment> getAll(){
-        return this.repository.findAll().stream().collect(Collectors.toSet());
+        return (Set<Payment>) this.repository.findAll().stream().collect(Collectors.toSet());
     }
 }

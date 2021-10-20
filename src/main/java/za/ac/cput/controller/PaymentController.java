@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.factory.PaymentFactory;
 import za.ac.cput.entity.Payment;
-import za.ac.cput.service.impl.PaymentServiceImp;
+import za.ac.cput.service.impl.PaymentImp;
 import java.util.Set;
 
 /** Payment Controller
@@ -16,11 +16,11 @@ import java.util.Set;
 public class PaymentController {
 
     @Autowired
-    private PaymentServiceImp paymentService;
+    private PaymentImp paymentService;
 
     @PostMapping("/create")
     public Payment create(@RequestBody Payment payment){
-        Payment newPayment = PaymentFactory.createPayment("Visa");
+        Payment newPayment = PaymentFactory.createPayment("");
         return paymentService.create(newPayment);
     }
 

@@ -1,6 +1,7 @@
-package za.ac.cput.service.;
+package za.ac.cput.service;
 
-import org.junit.jupiter.api.Pay;
+//import org.junit.jupiter.api.Pay;
+import za.ac.cput.entity.Payment;
 import za.ac.cput.service.PaymentService;
 import za.ac.cput.service.PaymentService;
 

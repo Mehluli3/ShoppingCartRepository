@@ -1,12 +1,12 @@
 package za.ac.cput.service.impl;
-import org.graalvm.compiler.serviceprovider.IsolateUtil;
+//import org.graalvm.compiler.serviceprovider.IsolateUtil;
 import org.junit.Test;
 import org.junit.Assert;
 import za.ac.cput.entity.Payment;
 import za.ac.cput.factory.PaymentFactory;
 import za.ac.cput.service.PaymentService;
 import static org.junit.Assert.*;
-impor org.springframework.bean.factory.annotation.Autowired;
+//import org.springframework.bean.factory.annotation.Autowired;
 import java.util.Set;
 
 /** Payment ServiceTest
@@ -14,7 +14,7 @@ import java.util.Set;
  */
 
     class PaymentImpTest {
-        @Autowired
+
         private static PaymentService service;
         private static Payment payment = PaymentFactory.createPayment("Visa");
 
