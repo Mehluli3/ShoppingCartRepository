@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 public class Payment implements Serializable{
-
+    @Id
     private String paymentId;
     private String paymentType;
 
@@ -19,7 +19,6 @@ public class Payment implements Serializable{
      * @param builder
      */
 
-    @Id
     private Payment(Builder builder){
         this.paymentId = builder.paymentId;
         this.paymentType = builder.paymentType;

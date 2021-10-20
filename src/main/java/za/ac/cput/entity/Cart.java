@@ -7,12 +7,13 @@ package za.ac.cput.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class Cart {
+public class Cart implements Serializable {
+
     @Id
     private String customerId;
-
     private String productId, productName;
     private int quantity;
     private double orderPrice;

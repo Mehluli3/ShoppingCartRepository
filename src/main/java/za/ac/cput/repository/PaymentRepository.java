@@ -10,7 +10,4 @@ import java.util.Set;
 // Author: Chadleigh Dunbar (218065256)
 
 @Repository
-public
-
-
-
+public interface PaymentRepository extends JpaRepository<Payment, String> {}
