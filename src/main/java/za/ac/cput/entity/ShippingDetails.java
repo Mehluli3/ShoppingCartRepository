@@ -72,6 +72,13 @@ public class ShippingDetails implements Serializable{
             return this;
         }
 
+        public Builder copy(ShippingDetails shippingDetails){
+            this.shippingId = shippingDetails.shippingId;
+            this.shippingType = shippingDetails.shippingType;
+            this.shippingCost = shippingDetails.shippingCost;
+            return this;
+        }
+
         public ShippingDetails build(){
             return new ShippingDetails(this);
         }

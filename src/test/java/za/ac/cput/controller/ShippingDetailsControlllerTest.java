@@ -1,16 +1,72 @@
-package za.ac.cput.controller;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import za.ac.cput.entity.ShippingDetails;
+import za.ac.cput.factory.ShippingDetailsFactory;
 
-/**
- * ShippingDetailsFactory.java
- * Shipping Details Factory
- * Author: Aderito Zacarias (215278739)
- **/
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import org.junit.jupiter.api.Test;
+public class ShippingDetailsControlllerTest {
+    private static ShippingDetails shippingDetails = ShippingDetailsFactory.getShippingDetails("1", 1223);
+    private static String SECURITY_USERNAME = "admin";
+    private static String SECURITY_PASSWORD = "admin123";
 
-class ShippingDetailsControlllerTest {
+    @Autowired
+    private TestRestTemplate restTemplate;
+    private String baseURL = "http://localhost:8080/ShippingDetails/";
 
     @Test
-    void create() {
+    public void a_create() {
+        String url = baseURL + "create";
+        System.out.println("URL:" + url);
+        System.out.println("Post date:" + shippingDetails);
+        ResponseEntity<ShippingDetails> postResponse = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, shippingDetails, ShippingDetails.class);
+        assertNotNull(postResponse);
+        assertNotNull(postResponse.getBody());
+        shippingDetails = postResponse.getBody();
+        System.out.println("Saved data:" + shippingDetails);
+        assertEquals(shippingDetails.getShippingId(), postResponse.getBody().getShippingId());
+    }
+
+    @Test
+    public void b_read() {
+        String url = baseURL + "read/" + shippingDetails.getShippingId();
+        System.out.println("URL: " + url);
+        ResponseEntity<ShippingDetails> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).getForEntity(url, ShippingDetails.class);
+        assertEquals(shippingDetails.getShippingId(), response.getBody().getShippingId());
+    }
+
+    @Test
+    public void c_update() {
+        ShippingDetails updated = new ShippingDetails.Builder().copy(shippingDetails).setShippingCost(shippingDetails.getShippingCost()+950.00).build();
+        updated = new ShippingDetails.Builder().copy(updated).setShippingCost(shippingDetails.getShippingCost()-67).build();
+        String url = baseURL + "update";
+        System.out.println("URL: " + url);
+        System.out.println("Post date: " + updated);
+        ResponseEntity<ShippingDetails> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).postForEntity(url, updated, ShippingDetails.class);
+        assertEquals(shippingDetails.getShippingId(), response.getBody().getShippingId());
+    }
+
+    @Test
+    public void d_getall() {
+        String url = baseURL + "all";
+        System.out.println("URL: " + url);
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+        ResponseEntity<String> response = restTemplate.withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD).exchange(url, HttpMethod.GET, entity, String.class);
+        System.out.println(response);
+        System.out.println(response.getBody());
+    }
+
+    @Test
+    public void e_delete() {
+        String url = baseURL + "delete/" + shippingDetails.getShippingId();
+        System.out.println("URL: " + url);
+        restTemplate.withBasicAuth(SECURITY_USERNAME,SECURITY_PASSWORD).delete(url);
     }
 }

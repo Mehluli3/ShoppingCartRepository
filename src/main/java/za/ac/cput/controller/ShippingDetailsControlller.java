@@ -46,4 +46,18 @@ public class ShippingDetailsControlller {
     }
 
 
+    @GetMapping("/read/{id}")
+    public ShippingDetails read(@PathVariable String id){
+        return shippingDetailsService.read(id);
+    }
+
+    @PostMapping ("/update")
+    public ShippingDetails update(@RequestBody ShippingDetails student){
+        return shippingDetailsService.update(student);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public boolean delete(@PathVariable String id){
+        return shippingDetailsService.delete(id);
+    }
 }
